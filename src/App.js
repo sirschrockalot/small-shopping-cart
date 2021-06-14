@@ -16,10 +16,10 @@ function App() {
 
   // Get Products from API call
   const getProducts = async () => {
-    const response = await product.get("/items/type", {
-      params: {
-        searchCriteria: "Amino_Acids",
-      },
+    const response = await product.get("/items", {
+      // params: {
+      //   searchCriteria: "Amino_Acids",
+      // },
     });
     setProducts(response.data);
   };
