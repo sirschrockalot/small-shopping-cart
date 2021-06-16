@@ -11,15 +11,15 @@ function App() {
 
   //Make API call when function is initiated
   useEffect(() => {
-    getProducts();
+    getProducts("Protein");
   }, []);
 
   // Get Products from API call
-  const getProducts = async () => {
-    const response = await product.get("/items", {
-      // params: {
-      //   searchCriteria: "Amino_Acids",
-      // },
+  const getProducts = async (product_type) => {
+    const response = await product.get("/items/type", {
+      params: {
+        searchCriteria: product_type,
+      },
     });
     setProducts(response.data);
   };
@@ -47,6 +47,7 @@ function App() {
       );
     }
   };
+
   return (
     <div className="App">
       <Header countCartItems={cartItems.length}></Header>

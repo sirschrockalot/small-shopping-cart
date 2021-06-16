@@ -4,13 +4,16 @@ import Product from "./Product";
 export default function Main(props) {
   const { products, onAdd } = props;
   return (
-    <main className="block col-2">
+    <div className="block col-2">
       <h2>Products</h2>
-      <div className="ui equal width grid">
-        {products.map((product) => (
-          <Product key={product.id} product={product} onAdd={onAdd}></Product>
-        ))}
+      <br></br>
+      <div className="ui grid container">
+        <div className="ui relaxed equal width grid">
+          {products.map((product) => (
+            <Product key={product.id} product={product} onAdd={onAdd}></Product>
+          ))}
+        </div>
       </div>
-    </main>
+    </div>
   );
 }
