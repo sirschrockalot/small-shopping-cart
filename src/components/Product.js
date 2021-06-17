@@ -4,7 +4,8 @@ export default function Product(props) {
   const { product, onAdd } = props;
 
   let [size, setSize] = useState("button");
-
+  const [flavours, setFlavours] = useState([]);
+  
   let handleFlavorChange = (e) => {
     console.log(e.target.value);
     // setFruit(e.target.value)
@@ -12,11 +13,19 @@ export default function Product(props) {
 
   let handleSizeChange = (e) => {
     // console.log(e.target.value);
+    
+    const variants = product.variants.filter((variant) => 
+   variant.size === e.target.value
+      
+    )
+    if (variants[0]){
+      setFlavours(variants[0].flavors);
+    }
     setSize(e.target.value);
   };
 
   return (
-    <div className="ui card">
+    <div className="ui card col-3 m-0 p-0">
       <div className="image">
         <img
           src={product.image_url}
@@ -41,13 +50,14 @@ export default function Product(props) {
           </select>
           <select className="ui dropdown" onChange={handleFlavorChange}>
             <option value="">Flavors</option>
-            {product.variants.map((variant) =>
-              variant.flavors.map((flavor) => (
-                <option key={flavor} value={flavor}>
-                  {flavor}
-                </option>
-              ))
-            )}
+            {
+            
+            flavours.map((flavor) => (
+              <option key={flavor} value={flavor}>
+                {flavor}
+              </option>
+            ))
+            }
           </select>
         </div>
       </div>

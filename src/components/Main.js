@@ -4,7 +4,7 @@ import Product from "./Product";
 export default function Main(props) {
   const { products, onAdd } = props;
   return (
-    <div className="block col-2">
+    <div className="block">
       <h2>Products</h2>
       <br></br>
       <div className="ui grid container">
