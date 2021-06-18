@@ -5,7 +5,6 @@ export default function Main(props) {
   const { products, onAdd } = props;
   return (
     <div className="block">
-      <h2>Products</h2>
       <br></br>
       <div className="ui grid container">
         <div className="ui relaxed equal width grid">

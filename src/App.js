@@ -48,19 +48,10 @@ function App() {
     }
   };
 
-  // const onNavBarProtienClick = (e) => {
-  //   console.log(e.target.value);
-  //   getProducts("Protein");
-  // };
-
   const onNavBarClick = (e) => {
     console.log(e.target.value);
     getProducts(e.target.value);
   };
-
-  // const onNavBarAminoAcidsClick = () => {
-  //   getProducts("Amino Acids");
-  // };
 
   return (
     <div className="App">
@@ -70,11 +61,11 @@ function App() {
       ></Header>
       <div className="row">
         <Main products={products} onAdd={onAdd}></Main>
-        <Basket
+        {/* <Basket
           cartItems={cartItems}
           onAdd={onAdd}
           onRemove={onRemove}
-        ></Basket>
+        ></Basket> */}
       </div>
     </div>
   );
