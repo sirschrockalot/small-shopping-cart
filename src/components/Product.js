@@ -5,10 +5,11 @@ export default function Product(props) {
 
   let [size, setSize] = useState([]);
   const [price, setPrice] = useState([product.price]);
+  const [enableBtn, setEnableBtn] = useState([true]);
   const [flavours, setFlavours] = useState([]);
 
   let handleFlavorChange = (e) => {
-    console.log(e.target.value);
+    setEnableBtn(false);
   };
 
   let handleSizeChange = (e) => {
@@ -59,7 +60,11 @@ export default function Product(props) {
         <div className="ui tag labels">
           <a className="ui label">${price}</a>
         </div>
-        <button className="ui button" onClick={() => onAdd(product)}>
+        <button
+          className="ui button"
+          disabled={enableBtn}
+          onClick={() => onAdd(product)}
+        >
           Add to cart
         </button>
       </div>

@@ -2,6 +2,8 @@ import Header from "./components/Header";
 import Main from "./components/Main";
 import Basket from "./components/Basket";
 import product from "./api/product";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 import { useState, useEffect } from "react";
 
 function App() {
