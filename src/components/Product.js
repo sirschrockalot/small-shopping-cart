@@ -3,23 +3,22 @@ import React, { useState } from "react";
 export default function Product(props) {
   const { product, onAdd } = props;
 
-  let [size, setSize] = useState("button");
+  let [size, setSize] = useState([]);
+  const [price, setPrice] = useState([product.price]);
   const [flavours, setFlavours] = useState([]);
-  
+
   let handleFlavorChange = (e) => {
     console.log(e.target.value);
-    // setFruit(e.target.value)
   };
 
   let handleSizeChange = (e) => {
-    // console.log(e.target.value);
-    
-    const variants = product.variants.filter((variant) => 
-   variant.size === e.target.value
-      
-    )
-    if (variants[0]){
+    const variants = product.variants.filter(
+      (variant) => variant.size === e.target.value
+    );
+    console.log(variants);
+    if (variants[0]) {
       setFlavours(variants[0].flavors);
+      setPrice(variants[0].price);
     }
     setSize(e.target.value);
   };
@@ -32,10 +31,8 @@ export default function Product(props) {
           alt={product.name}
           style={{
             height: "400px",
-            // backgroundSize: "cover",
           }}
         />
-        <button> {size}</button>
       </div>
       <div className="content">
         <a className="header">{product.name}</a>
@@ -50,20 +47,17 @@ export default function Product(props) {
           </select>
           <select className="ui dropdown" onChange={handleFlavorChange}>
             <option value="">Flavors</option>
-            {
-            
-            flavours.map((flavor) => (
+            {flavours.map((flavor) => (
               <option key={flavor} value={flavor}>
                 {flavor}
               </option>
-            ))
-            }
+            ))}
           </select>
         </div>
       </div>
       <div className="extra content">
         <div className="ui tag labels">
-          <a className="ui label">${product.price}</a>
+          <a className="ui label">${price}</a>
         </div>
         <button className="ui button" onClick={() => onAdd(product)}>
           Add to cart

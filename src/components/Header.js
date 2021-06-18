@@ -1,25 +1,107 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Header(props) {
   return (
-    <header className="block row center">
-      <div>
-        <a href="#/">
-          <h1>Small Shopping Cart</h1>
-        </a>
-      </div>
-      <div>
-        <a href="#/cart">
-          Cart{" "}
-          {props.countCartItems ? (
-            <button className="badge">{props.countCartItems}</button>
-          ) : (
-            ""
-          )}
-        </a>{" "}
-        <a href="#/signin"> SignIn</a>
-      </div>
-    </header>
+    <nav class="navbar justify-content-center navbar-light bg-light">
+      <a class="navbar-brand" href="#">
+        <img
+          src="https://redemptionfitnesswi.com/wp-content/uploads/2020/10/Redemption-Fitness-Logo-long-web.png"
+          alt=""
+          width="300"
+          height="100"
+        />
+      </a>
+
+      <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link "
+            id="pills-home-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#pills-home"
+            type="button"
+            role="tab"
+            value="Protein"
+            aria-controls="pills-home"
+            aria-selected="true"
+            onClick={(e) => props.onNavBarClick(e)}
+          >
+            Proteins
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="pills-profile-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#pills-profile"
+            type="button"
+            value="pre-intra-workout"
+            role="tab"
+            aria-controls="pills-profile"
+            aria-selected="false"
+            onClick={(e) => props.onNavBarClick(e)}
+          >
+            Pre/Post Workout
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="pills-contact-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#pills-contact"
+            type="button"
+            value="Amino Acids"
+            role="tab"
+            aria-controls="pills-contact"
+            aria-selected="false"
+            onClick={(e) => props.onNavBarClick(e)}
+          >
+            Amino Acids
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="pills-contact-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#pills-contact"
+            type="button"
+            role="tab"
+            aria-controls="pills-contact"
+            aria-selected="false"
+            value="performance-pantry"
+            onClick={(e) => props.onNavBarClick(e)}
+          >
+            Performance Pantry
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="pills-contact-tab"
+            data-bs-toggle="pill"
+            data-bs-target="#pills-contact"
+            type="button"
+            role="tab"
+            aria-controls="pills-contact"
+            aria-selected="false"
+            value="cart"
+            // onClick={(e) => props.onNavBarClick(e)}
+          >
+            Cart {""}
+            {props.countCartItems ? (
+              <button className="badge">{props.countCartItems}</button>
+            ) : (
+              ""
+            )}
+          </button>
+        </li>
+      </ul>
+    </nav>
+
     // <Router>
     //   <div className="ui secondary  menu">
     //     <Link to="/" className="item active">

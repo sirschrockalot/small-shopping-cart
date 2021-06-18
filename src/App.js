@@ -16,7 +16,7 @@ function App() {
 
   // Get Products from API call
   const getProducts = async (product_type) => {
-    const response = await product.get("/items/type", {
+    const response = await product.get("/products/type", {
       params: {
         searchCriteria: product_type,
       },
@@ -48,9 +48,26 @@ function App() {
     }
   };
 
+  // const onNavBarProtienClick = (e) => {
+  //   console.log(e.target.value);
+  //   getProducts("Protein");
+  // };
+
+  const onNavBarClick = (e) => {
+    console.log(e.target.value);
+    getProducts(e.target.value);
+  };
+
+  // const onNavBarAminoAcidsClick = () => {
+  //   getProducts("Amino Acids");
+  // };
+
   return (
     <div className="App">
-      <Header countCartItems={cartItems.length}></Header>
+      <Header
+        countCartItems={cartItems.length}
+        onNavBarClick={onNavBarClick}
+      ></Header>
       <div className="row">
         <Main products={products} onAdd={onAdd}></Main>
         <Basket
