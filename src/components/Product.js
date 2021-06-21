@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-export default function Product(props) {
-  const { product, onAdd } = props;
+export default function Product({ product, onAdd }) {
+  // const { product, onAdd } = props;
 
   let [size, setSize] = useState([]);
   const [price, setPrice] = useState([product.price]);
