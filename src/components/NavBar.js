@@ -87,10 +87,8 @@ export default function NavBar(props) {
               <li className="nav-item">
                 <Link to="/cart" className="nav-link">
                   Cart {""}
-                  {props.countCartItems ? (
-                    <button classNameName="badge">
-                      {props.countCartItems}
-                    </button>
+                  {cartItems.length ? (
+                    <button className="badge">{cartItems.length}</button>
                   ) : (
                     ""
                   )}
@@ -128,7 +126,12 @@ export default function NavBar(props) {
             />
           )}
         />
-        <Route path="/cart" component={Basket} />
+        <Route
+          path="/cart"
+          render={(props) => (
+            <Basket cartItems={cartItems} onAdd={onAdd} onRemove={onRemove} />
+          )}
+        />
       </Switch>
     </Router>
   );

@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 
 export default function Product({ product, onAdd }) {
-  // const { product, onAdd } = props;
-
   let [size, setSize] = useState([]);
   const [price, setPrice] = useState([product.price]);
   const [enableBtn, setEnableBtn] = useState([true]);
@@ -16,7 +14,7 @@ export default function Product({ product, onAdd }) {
     const variants = product.variants.filter(
       (variant) => variant.size === e.target.value
     );
-    console.log(variants);
+    // console.log(variants);
     if (variants[0]) {
       setFlavours(variants[0].flavors);
       setPrice(variants[0].price);
