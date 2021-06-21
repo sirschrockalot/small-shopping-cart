@@ -3,10 +3,10 @@ import React from "react";
 
 export default function Header(props) {
   return (
-    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-      <li class="nav-item" role="presentation">
+    <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
+      <li className="nav-item" role="presentation">
         <button
-          class="nav-link "
+          className="nav-link "
           id="pills-home-tab"
           data-bs-toggle="pill"
           data-bs-target="#pills-home"
@@ -20,9 +20,9 @@ export default function Header(props) {
           Proteins
         </button>
       </li>
-      <li class="nav-item" role="presentation">
+      <li className="nav-item" role="presentation">
         <button
-          class="nav-link"
+          className="nav-link"
           id="pills-profile-tab"
           data-bs-toggle="pill"
           data-bs-target="#pills-profile"
@@ -36,9 +36,9 @@ export default function Header(props) {
           Pre/Post Workout
         </button>
       </li>
-      <li class="nav-item" role="presentation">
+      <li className="nav-item" role="presentation">
         <button
-          class="nav-link"
+          className="nav-link"
           id="pills-contact-tab"
           data-bs-toggle="pill"
           data-bs-target="#pills-contact"
@@ -52,9 +52,9 @@ export default function Header(props) {
           Amino Acids
         </button>
       </li>
-      <li class="nav-item" role="presentation">
+      <li className="nav-item" role="presentation">
         <button
-          class="nav-link"
+          className="nav-link"
           id="pills-contact-tab"
           data-bs-toggle="pill"
           data-bs-target="#pills-contact"
