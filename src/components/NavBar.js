@@ -24,8 +24,15 @@ export default function NavBar(props) {
     });
     setProducts(response.data);
   };
-  const onAdd = (product) => {
+  const onAdd = (product, size, flavour) => {
     const exist = cartItems.find((x) => x.id === product.id);
+       if (!exist) {
+
+      const sizeSelected =  product.variants.filter((a) => a.size === size );
+      const flavourSelected =  sizeSelected[0].flavors.filter((a) => a === flavour );
+      sizeSelected[0]["flavors"] = [flavourSelected[0]];
+      product["variants"] = [sizeSelected[0]];
+    }
     if (exist) {
       setCartItems(
         cartItems.map((x) =>

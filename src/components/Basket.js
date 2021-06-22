@@ -17,15 +17,28 @@ export default function Basket({ cartItems, onAdd, onRemove }) {
           {cartItems.length === 0 && <div>Cart is empty</div>}
           {cartItems.map((item) => (
             <div key={item.id} className="row">
-              <div className="col-4">
-                {item.name} :{" "}
-                <img
+
+              <div className="col-2 pt-4">
+              <div>
+{item.name} :{" "}
+</div>
+<div>
+{item.variants[0].size}
+
+</div>
+<div>
+{item.variants[0].flavors[0]}
+</div>    
+  </div>  
+              <div className="col">
+            <img
                   src={item.image_url}
                   alt={item.name}
                   style={{
                     height: "100px",
                   }}
                 />
+  
               </div>
               <div className="block col-2 text-right">
                 {/* <div className="block"> */}

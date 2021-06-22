@@ -3,11 +3,13 @@ import React, { useState } from "react";
 export default function Product({ product, onAdd }) {
   let [size, setSize] = useState([]);
   const [price, setPrice] = useState([product.price]);
+  let [flavour, setFlavour] = useState([]);
   const [enableBtn, setEnableBtn] = useState([true]);
   const [flavours, setFlavours] = useState([]);
 
   let handleFlavorChange = (e) => {
     setEnableBtn(false);
+    setFlavour(e.target.value);
   };
 
   let handleSizeChange = (e) => {
@@ -61,7 +63,7 @@ export default function Product({ product, onAdd }) {
         <button
           className="ui button"
           disabled={enableBtn}
-          onClick={() => onAdd(product)}
+          onClick={() => onAdd(product, size, flavour)}
         >
           Add to cart
         </button>
