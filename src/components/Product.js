@@ -63,7 +63,7 @@ export default function Product({ product, onAdd }) {
         <button
           className="ui button"
           disabled={enableBtn}
-          onClick={() => onAdd(product, size, flavour)}
+          onClick={() => onAdd(product, size, flavour, price)}
         >
           Add to cart
         </button>
