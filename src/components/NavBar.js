@@ -9,6 +9,7 @@ import ProductsPage from "./ProductsPage";
 export default function NavBar(props) {
   const [cartItems, setCartItems] = useState([]);
   const [products, setProducts] = useState([]);
+  const [text, setText] = useState("Login");
 
   // Make API call when function is initiated
   useEffect(() => {
@@ -58,6 +59,11 @@ export default function NavBar(props) {
     }
   };
 
+  const changeText = (text) => {
+    setText("Logged In");
+    // this.setState({ text });
+  };
+
   return (
     <Router>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -104,7 +110,7 @@ export default function NavBar(props) {
                 </Link>
               </li>
             </ul>
-            <form className="d-flex">
+            {/* <form className="d-flex">
               <input
                 className="form-control me-2"
                 type="search"
@@ -114,7 +120,18 @@ export default function NavBar(props) {
               <button className="btn btn-outline-success" type="submit">
                 Search
               </button>
-            </form>
+            </form> */}
+            <div>
+              <button
+                className="btn btn-outline-success"
+                onClick={() => {
+                  changeText("newtext");
+                }}
+                type="submit"
+              >
+                {text}
+              </button>
+            </div>
           </div>
         </div>
       </nav>

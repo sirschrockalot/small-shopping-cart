@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import product from "../api/product";
 
 export default function Basket({ cartItems, onAdd, onRemove }) {
+  const [buttonEnabled, setButtonEnabled] = useState(false);
   const itemsPrice = cartItems.reduce((a, c) => a + c.qty * c.price, 0);
   const totalPrice = itemsPrice;
 
   const handleSubmit = (event) => {
     alert(event.target.value);
     event.preventDefault();
+  };
+
+  const handleChange = (event) => {
+    // this.setState({email: e.target.value})
+    setButtonEnabled(true);
   };
 
   // Get Products from API call
@@ -86,12 +92,76 @@ export default function Basket({ cartItems, onAdd, onRemove }) {
                 <strong>${totalPrice}</strong>
               </div>
             </div>
-            <hr />
-            <div>
-              <button onClick={saveCart}>Checkout</button>
-            </div>
           </>
         )}
+      </div>
+
+      <div className="container">
+        <hr />
+        {/* <div>
+          <form>
+          <button onClick={saveCart}>Checkout</button>
+          </form>
+        </div> */}
+        <form className="ui form">
+          <div className="field">
+            <label>Name</label>
+            <div className="two fields">
+              <div className="field">
+                <input
+                  type="text"
+                  name="shipping[first-name]"
+                  placeholder="First Name"
+                />
+              </div>
+              <div className="field">
+                <input
+                  type="text"
+                  name="shipping[last-name]"
+                  placeholder="Last Name"
+                />
+              </div>
+              <div className="field">
+                <input
+                  type="email"
+                  className="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                  placeholder="Enter email"
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="flexRadioDefault"
+              id="flexRadioDefault1"
+            />
+            <label class="form-check-label" for="flexRadioDefault1">
+              Credit Card
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="flexRadioDefault"
+              id="flexRadioDefault2"
+              checked
+            />
+            <label class="form-check-label" for="flexRadioDefault2">
+              Cash/Check
+            </label>
+          </div>
+          <div className="container">
+            <button disabled={!buttonEnabled} onClick={saveCart}>
+              Checkout
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );
