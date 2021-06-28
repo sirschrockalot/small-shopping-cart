@@ -18,7 +18,7 @@ export default function NavBar(props) {
 
   // Get Products from API call
   const getProducts = async (product_type) => {
-    const response = await product.get("/products/type", {
+    const response = await product.get("/product/type", {
       params: {
         searchCriteria: product_type,
       },
@@ -91,7 +91,7 @@ export default function NavBar(props) {
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <Link to="/home" className="nav-link">
-                  Home
+                  Orders
                 </Link>
               </li>
               <li className="nav-item">
@@ -137,11 +137,7 @@ export default function NavBar(props) {
       </nav>
       <Switch>
         <Route exact path="/" render={() => <HomePage title="Icon click" />} />
-        <Route
-          exact
-          path="/home"
-          render={() => <HomePage title="HomePage" />}
-        />
+        <Route exact path="/home" render={() => <HomePage />} />
         <Route
           path="/products"
           render={(props) => (
