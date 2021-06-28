@@ -5,6 +5,8 @@ import Basket from "./Basket";
 import HomePage from "./HomePage";
 import product from "../api/product";
 import ProductsPage from "./ProductsPage";
+import AppLogin from "./AppLogin";
+import AppSignUp from "./AppSignUp";
 
 export default function NavBar(props) {
   const [cartItems, setCartItems] = useState([]);
@@ -122,15 +124,20 @@ export default function NavBar(props) {
               </button>
             </form> */}
             <div>
-              <button
-                className="btn btn-outline-success"
-                onClick={() => {
-                  changeText("newtext");
-                }}
-                type="submit"
-              >
-                {text}
-              </button>
+              <Link to="/login">
+                <button
+                  className="btn btn-outline-success"
+                  onClick={() => {
+                    changeText("newtext");
+                  }}
+                  type="submit"
+                >
+                  {text}
+                </button>
+              </Link>
+              <Link to="/signup">
+                <button className="btn btn-outline-success">SignUp</button>
+              </Link>
             </div>
           </div>
         </div>
@@ -138,6 +145,8 @@ export default function NavBar(props) {
       <Switch>
         <Route exact path="/" render={() => <HomePage title="Icon click" />} />
         <Route exact path="/home" render={() => <HomePage />} />
+        <Route exact path="/login" render={() => <AppLogin />} />
+        <Route exact path="/signup" render={() => <AppSignUp />} />
         <Route
           path="/products"
           render={(props) => (
