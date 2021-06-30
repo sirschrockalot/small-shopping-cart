@@ -7,6 +7,7 @@ import product from "../api/product";
 import ProductsPage from "./ProductsPage";
 import AppLogin from "./AppLogin";
 import AppSignUp from "./AppSignUp";
+import localStorage from "local-storage";
 
 export default function NavBar(props) {
   const [cartItems, setCartItems] = useState([]);
@@ -64,6 +65,14 @@ export default function NavBar(props) {
   const changeText = (text) => {
     setText("Logged In");
     // this.setState({ text });
+  };
+
+  const requireAuth = (nextState, replace) => {
+    if (!localStorage.get("user")) {
+      replace({
+        pathname: "/home",
+      });
+    }
   };
 
   return (
@@ -143,8 +152,16 @@ export default function NavBar(props) {
         </div>
       </nav>
       <Switch>
-        <Route exact path="/" render={() => <HomePage title="Icon click" />} />
-        <Route exact path="/home" render={() => <HomePage />} />
+        <Route
+          exact
+          path="/"
+          render={() => <HomePage title="Icon click" onEnter={requireAuth} />}
+        />
+        <Route
+          exact
+          path="/home"
+          render={() => <HomePage onEnter={requireAuth} />}
+        />
         <Route exact path="/login" render={() => <AppLogin />} />
         <Route exact path="/signup" render={() => <AppSignUp />} />
         <Route

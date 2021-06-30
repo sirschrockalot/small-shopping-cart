@@ -1,4 +1,5 @@
 import React from "react";
+import localStorage from "local-storage";
 
 import { GoogleLogin } from "react-google-login";
 // refresh token
@@ -7,10 +8,11 @@ import { GoogleLogin } from "react-google-login";
 const clientId =
   "1046402052746-2k26ov4dd6hkqdrbn4q6dpj7r4r49nro.apps.googleusercontent.com";
 
-function Login() {
+function GLogin() {
   const onSuccess = (res) => {
     console.log("Login Success: currentUser:", res.profileObj);
     alert(`Logged in successfully welcome ${res.profileObj.name} 😍.`);
+    localStorage.set("user", "Joel");
     // refreshTokenSetup(res);
   };
 
@@ -36,4 +38,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default GLogin;

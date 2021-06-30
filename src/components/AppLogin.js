@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import GLogin from "./GLogin";
+import Logout from "./Logout";
 
 export default class AppLogin extends Component {
   render() {
@@ -36,6 +38,10 @@ export default class AppLogin extends Component {
                 Remember me
               </label>
             </div>
+          </div>
+          <div className="container">
+            <GLogin />
+            <Logout />
           </div>
 
           <button type="submit" className="btn btn-dark btn-lg btn-block">
