@@ -1,6 +1,6 @@
 import React from "react";
 import product from "../api/product";
-import localStorage from "local-storage";
+// import localStorage from "local-storage";
 
 import DataTable, { createTheme } from "react-data-table-component";
 
@@ -51,7 +51,7 @@ class HomePage extends React.Component {
   }
   componentDidMount() {
     this.getCartData();
-    console.log(localStorage.get("document"));
+    // console.log(localStorage.get("document"));
 
     // Add static columns to columns array state
     const static_columns = [

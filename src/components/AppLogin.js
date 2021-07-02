@@ -1,9 +1,14 @@
 import React, { Component } from "react";
 import GLogin from "./GLogin";
 import Logout from "./Logout";
+import { BrowserRouter, Redirect} from "react-router-dom";
 
 export default class AppLogin extends Component {
   render() {
+    // if (localStorage.getItem("user")) {
+
+    //    <Redirect to="/products" />;
+    // }
     return (
       <div className="container">
         <form>
@@ -40,8 +45,8 @@ export default class AppLogin extends Component {
             </div>
           </div>
           <div className="container">
-            <GLogin />
-            <Logout />
+            <GLogin  isLogin={this.props.isLogin}/>
+            <Logout isLogin={this.props.isLogin}/>
           </div>
 
           <button type="submit" className="btn btn-dark btn-lg btn-block">

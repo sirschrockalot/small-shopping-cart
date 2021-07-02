@@ -1,5 +1,5 @@
 import React from "react";
-import localStorage from "local-storage";
+// import localStorage from "local-storage";
 
 import { GoogleLogin } from "react-google-login";
 // refresh token
@@ -8,11 +8,12 @@ import { GoogleLogin } from "react-google-login";
 const clientId =
   "1046402052746-2k26ov4dd6hkqdrbn4q6dpj7r4r49nro.apps.googleusercontent.com";
 
-function GLogin() {
+function GLogin(props) {
   const onSuccess = (res) => {
     console.log("Login Success: currentUser:", res.profileObj);
     alert(`Logged in successfully welcome ${res.profileObj.name} 😍.`);
-    localStorage.set("user", "Joel");
+    localStorage.setItem("user", "Joel");
+    props.isLogin(true)
     // refreshTokenSetup(res);
   };
 
@@ -32,7 +33,7 @@ function GLogin() {
         onFailure={onFailure}
         cookiePolicy={"single_host_origin"}
         style={{ marginTop: "100px" }}
-        isSignedIn={true}
+        isSignedIn={false}
       />
     </div>
   );

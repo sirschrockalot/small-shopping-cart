@@ -7,7 +7,7 @@ import product from "../api/product";
 import ProductsPage from "./ProductsPage";
 import AppLogin from "./AppLogin";
 import AppSignUp from "./AppSignUp";
-import localStorage from "local-storage";
+// import localStorage from "local-storage";
 
 export default function NavBar(props) {
   const [cartItems, setCartItems] = useState([]);
@@ -68,7 +68,7 @@ export default function NavBar(props) {
   };
 
   const requireAuth = (nextState, replace) => {
-    if (!localStorage.get("user")) {
+    if (!localStorage.getItem("user")) {
       replace({
         pathname: "/home",
       });
@@ -174,6 +174,7 @@ export default function NavBar(props) {
             />
           )}
         />
+        
         <Route
           path="/cart"
           render={(props) => (
@@ -184,3 +185,10 @@ export default function NavBar(props) {
     </Router>
   );
 }
+
+
+
+
+
+
+
