@@ -1,5 +1,6 @@
 import React from "react";
 import { GoogleLogout } from "react-google-login";
+import { Redirect } from "react-router-dom";
 // import localStorage from "local-storage";
 
 const clientId =
@@ -11,6 +12,7 @@ function Logout(props) {
     alert("Logout made successfully ✌");
     localStorage.clear();
     props.isLogin(false)
+    // return <Redirect to='/login'  />
   };
 
   return (

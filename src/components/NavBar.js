@@ -79,7 +79,7 @@ export default function NavBar(props) {
     <Router>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
-          <Link to="/" className="navbar-brand">
+          <Link to="/products" className="navbar-brand">
             <img
               src="https://redemptionfitnesswi.com/wp-content/uploads/2020/10/Redemption-Fitness-Logo-long-web.png"
               alt=""
@@ -154,7 +154,7 @@ export default function NavBar(props) {
       <Switch>
         <Route
           exact
-          path="/"
+          path="/home"
           render={() => <HomePage title="Icon click" onEnter={requireAuth} />}
         />
         <Route
@@ -162,7 +162,7 @@ export default function NavBar(props) {
           path="/home"
           render={() => <HomePage onEnter={requireAuth} />}
         />
-        <Route exact path="/login" render={() => <AppLogin />} />
+        <Route exact path="/login" render={() => <AppLogin  isLogin={props.isLogin}/>} />
         <Route exact path="/signup" render={() => <AppSignUp />} />
         <Route
           path="/products"
