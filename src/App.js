@@ -27,7 +27,7 @@ class App extends React.Component {
             !isLog && !localStorage.getItem('user')?
             <Route exact path='/' render={() => <AppLogin  isLogin={this.handleLogin}/>}/>
               :
-            <Route path='/' render={() =><NavBar/> }/>
+            <Route path='/' render={() =><NavBar isLogin={this.handleLogin}/> }/>
           }
         
         </Switch>
