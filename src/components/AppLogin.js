@@ -14,26 +14,58 @@ export default class AppLogin extends Component {
         <form>
           <h3>Log in</h3>
 
-          <div className="form-group">
+          <div className="form-group row pb-2">
+          <div className="col-md-3">
+
+</div>
+            <div className="col-md-1">
             <label>Email</label>
+
+            </div>
+            <div className="col-md-4">
             <input
               type="email"
               className="form-control"
               placeholder="Enter email"
             />
+
+            </div>
+            <div className="col-md-3">
+
+            </div>
           </div>
 
-          <div className="form-group">
+          <div className="form-group row">
+          <div className="col-md-3">
+
+</div>
+
+            <div className="col-md-1">
             <label>Password</label>
+            </div>
+            <div className="col-md-4">
             <input
               type="password"
               className="form-control"
               placeholder="Enter password"
             />
+            </div>
+
+            <div className="col-md-3">
+
+            </div>
+
+
+ 
+
           </div>
 
-          <div className="form-group">
-            <div className="custom-control custom-checkbox">
+          <div className="form-group row">
+
+            <div className="col-md-7">
+
+            </div>
+            <div className="custom-control custom-checkbox col-md-2">
               <input
                 type="checkbox"
                 className="custom-control-input"
@@ -43,11 +75,36 @@ export default class AppLogin extends Component {
                 Remember me
               </label>
             </div>
+          <div className="col-md-3">
+
           </div>
-          <div className="container">
-            <GLogin  isLogin={this.props.isLogin}/>
+          </div>
+          <div className="container row pb-2">
+            <div className="col-sm-3">
+
+            </div>
+            <div className="col-sm-2">
+
+</div>
+
+            <div className="col-sm-2">
+            <GLogin isLogin={this.props.isLogin}/>
+
+            </div>
+            <div className="col-sm-2">
             <Logout isLogin={this.props.isLogin}/>
+
+            </div>
+            <div className="col-sm-3">
+              
+            </div>
           </div>
+
+<div className="row">
+  <div className="col-sm-4">
+
+  </div>
+<div className="col-sm-3">
 
           <button type="submit" className="btn btn-dark btn-lg btn-block">
             Sign in
@@ -55,6 +112,11 @@ export default class AppLogin extends Component {
           <p className="forgot-password text-right">
             Forgot <a href="#">password?</a>
           </p>
+</div>
+<div className="col-sm-3">
+
+</div>
+</div>
         </form>
       </div>
     );
