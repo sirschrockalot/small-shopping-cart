@@ -13,7 +13,7 @@ export default function NavBar(props) {
   const [cartItems, setCartItems] = useState([]);
   const [products, setProducts] = useState([]);
   const [text, setText] = useState("Login");
-
+  const [modal, setModal] = useState(false);
   // Make API call when function is initiated
   useEffect(() => {
     getProducts("Protein");
@@ -49,6 +49,14 @@ export default function NavBar(props) {
       setCartItems([...cartItems, { ...product, qty: 1 }]);
     }
   };
+
+ const handleShow = (val) => {
+    this.setState({modal: true})
+  };
+
+const handleClose = (val) => 
+  {setModal(false)};
+
   const onRemove = (product) => {
     const exist = cartItems.find((x) => x.id === product.id);
     if (exist.qty === 1) {
@@ -133,17 +141,18 @@ export default function NavBar(props) {
               </button>
             </form> */}
             <div>
-              <Link to="/login">
+            <AppLogin modal={modal} handleShow={handleShow} handleClose={handleClose} isLogin={props.isLogin}/>
+              {/* <Link to="/login"> */}
                 <button
                   className="btn btn-outline-success"
                   onClick={() => {
-                    changeText("newtext");
+                    setModal(true)
                   }}
                   type="submit"
                 >
                   {text}
                 </button>
-              </Link>
+              {/* </Link> */}
               <Link to="/signup">
                 <button className="btn btn-outline-success">SignUp</button>
               </Link>

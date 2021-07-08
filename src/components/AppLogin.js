@@ -6,14 +6,17 @@ import { Button, Modal } from "react-bootstrap";
 import { render } from "@testing-library/react";
 
 
-export default class AppLogin extends Component {
+export default class AppLogin extends React.Component {
   constructor(props) {
     super(props);
     this.state = { show: props.modal };
   }
-  handleShow = () => {
-    this.setState({show: true})
-  };
+  // handleShow = () => {
+  //   this.setState({show: true})
+  // };
+
+  // handleClose = () => 
+  // this.setState({show: false});
   // const [open, setOpen] = React.useState(false)
  
     // if (localStorage.getItem("user")) {
@@ -27,26 +30,20 @@ export default class AppLogin extends Component {
     }
     render() {
 
+
     
       return (
         <div className="container">
         
-         {/* <>
-      <Button variant="primary" onClick={this.handleShow}>
-        Launch demo modal
-      </Button>
+  
+         <>
 
-      <Modal show={this.state.show} onHide={this.setState({show: false})}>
+      <Modal show={this.state.show} onHide={this.props.handleClose}>
         <Modal.Header closeButton>
           <Modal.Title> RedemptionLogin</Modal.Title>
         </Modal.Header>
         <Modal.Body>    
-  </Modal.Body>
-
-      </Modal>
-    </>  */}
-
-    <form>
+           <form>
           <h3>Log in</h3>
 
           <div className="form-group row pb-2">
@@ -153,7 +150,10 @@ export default class AppLogin extends Component {
 </div>
 </div>
         </form>
- 
+  </Modal.Body>
+
+      </Modal>
+    </> 
      </div>
     );
       }
