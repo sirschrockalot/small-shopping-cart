@@ -1,17 +1,52 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import GLogin from "./GLogin";
 import Logout from "./Logout";
 import { BrowserRouter, Redirect} from "react-router-dom";
+import { Button, Modal } from "react-bootstrap";
+import { render } from "@testing-library/react";
+
 
 export default class AppLogin extends Component {
-  render() {
+  constructor(props) {
+    super(props);
+    this.state = { show: props.modal };
+  }
+  handleShow = () => {
+    this.setState({show: true})
+  };
+  // const [open, setOpen] = React.useState(false)
+ 
     // if (localStorage.getItem("user")) {
 
     //    <Redirect to="/products" />;
     // }
-    return (
-      <div className="container">
-        <form>
+    componentWillReceiveProps(nextProps){
+    	if(this.state.show!==nextProps.modal){
+      	this.setState({show: nextProps.modal})
+      }
+    }
+    render() {
+
+    
+      return (
+        <div className="container">
+        
+         {/* <>
+      <Button variant="primary" onClick={this.handleShow}>
+        Launch demo modal
+      </Button>
+
+      <Modal show={this.state.show} onHide={this.setState({show: false})}>
+        <Modal.Header closeButton>
+          <Modal.Title> RedemptionLogin</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>    
+  </Modal.Body>
+
+      </Modal>
+    </>  */}
+
+    <form>
           <h3>Log in</h3>
 
           <div className="form-group row pb-2">
@@ -118,7 +153,9 @@ export default class AppLogin extends Component {
 </div>
 </div>
         </form>
-      </div>
+ 
+     </div>
     );
-  }
+      }
+  
 }
