@@ -38,8 +38,8 @@ export default class AppLogin extends React.Component {
   
          <>
 
-      <Modal show={this.state.show} onHide={this.props.handleClose}>
-        <Modal.Header closeButton>
+      <Modal size="lg" show={this.state.show} onHide={this.props.handleClose} backdrop="static">
+        <Modal.Header >
           <Modal.Title> RedemptionLogin</Modal.Title>
         </Modal.Header>
         <Modal.Body>    
@@ -151,7 +151,9 @@ export default class AppLogin extends React.Component {
 </div>
         </form>
   </Modal.Body>
-
+  <Modal.Footer>
+        <Button onClick={this.props.handleClose}>Close</Button>
+      </Modal.Footer>
       </Modal>
     </> 
      </div>

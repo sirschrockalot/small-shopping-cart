@@ -87,7 +87,7 @@ const handleClose = (val) =>
     <Router>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
-          <Link to="/products" className="navbar-brand">
+          <Link to="/" className="navbar-brand">
             <img
               src="https://redemptionfitnesswi.com/wp-content/uploads/2020/10/Redemption-Fitness-Logo-long-web.png"
               alt=""
@@ -114,7 +114,7 @@ const handleClose = (val) =>
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/products" className="nav-link">
+                <Link to="/" className="nav-link">
                   Products
                 </Link>
               </li>
@@ -161,6 +161,16 @@ const handleClose = (val) =>
         </div>
       </nav>
       <Switch>
+      <Route exact
+          path="/"
+          render={(props) => (
+            <ProductsPage
+              onAdd={onAdd}
+              products={products}
+              getProducts={getProducts}
+            />
+          )}
+        />
         <Route
           exact
           path="/home"
@@ -173,16 +183,7 @@ const handleClose = (val) =>
         />
         <Route exact path="/login" render={() => <AppLogin  isLogin={props.isLogin}/>} />
         <Route exact path="/signup" render={() => <AppSignUp />} />
-        <Route
-          path="/products"
-          render={(props) => (
-            <ProductsPage
-              onAdd={onAdd}
-              products={products}
-              getProducts={getProducts}
-            />
-          )}
-        />
+
         
         <Route
           path="/cart"
