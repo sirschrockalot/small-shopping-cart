@@ -7,6 +7,7 @@ import product from "../api/product";
 import ProductsPage from "./ProductsPage";
 import AppLogin from "./AppLogin";
 import AppSignUp from "./AppSignUp";
+import RouteGuard from "../RouteGuard";
 // import localStorage from "local-storage";
 
 export default function NavBar(props) {
@@ -171,16 +172,17 @@ const handleClose = (val) =>
             />
           )}
         />
-        <Route
+        {/* <Route
           exact
           path="/home"
           render={() => <HomePage title="Icon click" onEnter={requireAuth} />}
-        />
-        <Route
+        /> */}
+        <RouteGuard  path="/home" auth={props.isLog}/>
+        {/* <Route
           exact
           path="/home"
           render={() => <HomePage onEnter={requireAuth} />}
-        />
+        /> */}
         <Route exact path="/login" render={() => <AppLogin  isLogin={props.isLogin}/>} />
         <Route exact path="/signup" render={() => <AppSignUp />} />
 
