@@ -7,13 +7,14 @@ import product from "../api/product";
 import ProductsPage from "./ProductsPage";
 import AppLogin from "./AppLogin";
 import AppSignUp from "./AppSignUp";
+import RouteGuard from "../RouteGuard";
 // import localStorage from "local-storage";
 
 export default function NavBar(props) {
   const [cartItems, setCartItems] = useState([]);
   const [products, setProducts] = useState([]);
   const [text, setText] = useState("Login");
-
+  const [modal, setModal] = useState(false);
   // Make API call when function is initiated
   useEffect(() => {
     getProducts("Protein");
@@ -49,6 +50,14 @@ export default function NavBar(props) {
       setCartItems([...cartItems, { ...product, qty: 1 }]);
     }
   };
+
+ const handleShow = (val) => {
+    this.setState({modal: true})
+  };
+
+const handleClose = (val) => 
+  {setModal(false)};
+
   const onRemove = (product) => {
     const exist = cartItems.find((x) => x.id === product.id);
     if (exist.qty === 1) {
@@ -79,7 +88,7 @@ export default function NavBar(props) {
     <Router>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
-          <Link to="/products" className="navbar-brand">
+          <Link to="/" className="navbar-brand">
             <img
               src="https://redemptionfitnesswi.com/wp-content/uploads/2020/10/Redemption-Fitness-Logo-long-web.png"
               alt=""
@@ -106,7 +115,7 @@ export default function NavBar(props) {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/products" className="nav-link">
+                <Link to="/" className="nav-link">
                   Products
                 </Link>
               </li>
@@ -133,17 +142,18 @@ export default function NavBar(props) {
               </button>
             </form> */}
             <div>
-              <Link to="/login">
+            <AppLogin modal={modal} handleShow={handleShow} handleClose={handleClose} isLogin={props.isLogin}/>
+              {/* <Link to="/login"> */}
                 <button
                   className="btn btn-outline-success"
                   onClick={() => {
-                    changeText("newtext");
+                    setModal(true)
                   }}
                   type="submit"
                 >
                   {text}
                 </button>
-              </Link>
+              {/* </Link> */}
               <Link to="/signup">
                 <button className="btn btn-outline-success">SignUp</button>
               </Link>
@@ -152,20 +162,8 @@ export default function NavBar(props) {
         </div>
       </nav>
       <Switch>
-        <Route
-          exact
-          path="/home"
-          render={() => <HomePage title="Icon click" onEnter={requireAuth} />}
-        />
-        <Route
-          exact
-          path="/home"
-          render={() => <HomePage onEnter={requireAuth} />}
-        />
-        <Route exact path="/login" render={() => <AppLogin  isLogin={props.isLogin}/>} />
-        <Route exact path="/signup" render={() => <AppSignUp />} />
-        <Route
-          path="/products"
+      <Route exact
+          path="/"
           render={(props) => (
             <ProductsPage
               onAdd={onAdd}
@@ -174,6 +172,20 @@ export default function NavBar(props) {
             />
           )}
         />
+        {/* <Route
+          exact
+          path="/home"
+          render={() => <HomePage title="Icon click" onEnter={requireAuth} />}
+        /> */}
+        <RouteGuard  path="/home" auth={props.isLog}/>
+        {/* <Route
+          exact
+          path="/home"
+          render={() => <HomePage onEnter={requireAuth} />}
+        /> */}
+        <Route exact path="/login" render={() => <AppLogin  isLogin={props.isLogin}/>} />
+        <Route exact path="/signup" render={() => <AppSignUp />} />
+
         
         <Route
           path="/cart"

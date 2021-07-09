@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Redirect } from "react-router-dom";
+import HomePage from './components/HomePage';
 
 // const RouteGuard = ({ component: Component, auth, ...rest }) => {
 // console.log("auth:" + auth)
@@ -18,12 +19,12 @@ import { Route, Redirect } from "react-router-dom";
 
 const  RouteGuard = ({ children, auth, ...rest }) => {
     return (
-      <Route {...rest} render={({ location }) => {
+      <Route exact {...rest} render={({ location }) => {
+        {if (auth === false) {alert("Please Login to the website to view the orders page")}}
         return auth === true
-          ? children
+          ? <HomePage title="Icon click"/>
           : <Redirect to={{
-              pathname: '/login',
-              state: { from: location }
+              pathname: '/'
             }} />
       }} />
     )
