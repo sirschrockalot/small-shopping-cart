@@ -8,6 +8,7 @@ import ProductsPage from "./ProductsPage";
 import AppLogin from "./AppLogin";
 import AppSignUp from "./AppSignUp";
 import RouteGuard from "../RouteGuard";
+import _ from "lodash";
 // import localStorage from "local-storage";
 
 export default function NavBar(props) {
@@ -30,24 +31,25 @@ export default function NavBar(props) {
     setProducts(response.data);
   };
   const onAdd = (product, size, flavour, price) => {
-    const exist = cartItems.find((x) => x.id === product.id);
+    const productClone = _.cloneDeep(product);
+    const exist = cartItems.find((x) => x.id === productClone.id);
     if (!exist) {
-      const sizeSelected = product.variants.filter((a) => a.size === size);
+      const sizeSelected = productClone.variants.filter((a) => a.size === size);
       const flavourSelected = sizeSelected[0].flavors.filter(
         (a) => a === flavour
       );
       sizeSelected[0]["flavors"] = [flavourSelected[0]];
-      product["variants"] = [sizeSelected[0]];
-      product["price"] = price;
+      productClone["variants"] = [sizeSelected[0]];
+      productClone["price"] = price;
     }
     if (exist) {
       setCartItems(
         cartItems.map((x) =>
-          x.id === product.id ? { ...exist, qty: exist.qty + 1 } : x
+          x.id === productClone.id ? { ...exist, qty: exist.qty + 1 } : x
         )
       );
     } else {
-      setCartItems([...cartItems, { ...product, qty: 1 }]);
+      setCartItems([...cartItems, { ...productClone, qty: 1 }]);
     }
   };
 
